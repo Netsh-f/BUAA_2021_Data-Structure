@@ -1,0 +1,26 @@
+void quick_sort(int *num,int l,int r){
+	//如果小于等于1个数据元素·直接返回结束快排函数 r为数组元素总个数
+	if(l+1>=r){
+		return ;
+	}
+	int first=l,last=r-1,key=num[first];
+	while(first<last){
+		while(first<last&&num[last]>=key){
+			--last;
+		}
+		//如果值小于 key分界值 交换 
+		num[first]=num[last];
+		while(first<last&&num[first]<key){
+			++first;
+		}
+		//如果值大于key分界值 交换 
+		num[last]=num[first];
+	}
+	num[first]=key;
+	//递归左右部分进行快排 
+	quick_sort(num,l,first);
+	quick_sort(num,first+1,r);
+}
+————————————————
+版权声明：本文为CSDN博主「〖雪月清〗」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_52595134/article/details/118943109

@@ -1,0 +1,59 @@
+https://blog.csdn.net/weixin_44671737/article/details/114907473
+
+
+树的广度遍历
+
+       广度优先遍历又称宽度优先遍历，缩写为BFS，和深度优先遍历DFS不同的是深度优先是指的同一个树先将某节点所有子节点遍历完后再遍历其兄弟节点。而BFS是先把同一层级的节点遍历完后再遍历下一级的子节点。
+BFS
+
+       即同一层级遍历完然后到下一层级。
+加粗样式
+DFS
+
+       将一个节点全部遍历完，再遍历该节点的兄弟节点。
+在这里插入图片描述
+代码实现（Java）
+
+public static void bfs(Queue<TreeNode> queue,List<Integer> result,TreeNode root){
+    queue.add(root);
+    if (queue.size()>0){
+    	//queue用于缓存
+        while (!queue.isEmpty()){
+            TreeNode node = queue.poll();
+            result.add(node.val);
+            if (node.left!=null){
+                queue.add(node.left);
+            }
+
+            if (node.right!=null){
+                queue.add(node.right);
+            }
+        }
+    }
+}
+
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+    13
+    14
+    15
+    16
+    17
+
+       
+
+    BFS的代码稍微难于DFS，需要用一个辅助队列来缓存同一层级的元素。
+    DFS是递归实现，BFS一般不用递归。
+————————————————
+版权声明：本文为CSDN博主「兴趣使然的程序猿」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/weixin_44671737/article/details/114907473
